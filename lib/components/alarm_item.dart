@@ -2,23 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class AlarmItem extends StatefulWidget {
+class AlarmItem extends StatelessWidget {
   String time;
   String name;
   bool isActive;
+
+  Color activeTextColor = Colors.white;
+  Color inactiveTextColor = Colors.grey;
 
   AlarmItem(
       {super.key,
       required this.time,
       required this.name,
       required this.isActive});
-
-  @override
-  State<AlarmItem> createState() => _AlarmItemState();
-}
-
-class _AlarmItemState extends State<AlarmItem> {
-  Color activeTextColor = Colors.white;
 
   @override
   Widget build(BuildContext context) {
@@ -34,17 +30,23 @@ class _AlarmItemState extends State<AlarmItem> {
             Column(
               children: [
                 Text(
-                  widget.time,
+                  time,
                   style: TextStyle(
-                      color: Colors.grey[400],
+                      color: isActive ? activeTextColor : inactiveTextColor,
                       fontSize: 42,
                       fontWeight: FontWeight.w300),
                 ),
-                Text(widget.name)
+                Text(name,
+                    style: TextStyle(
+                      color: isActive ? activeTextColor : inactiveTextColor,
+                      fontSize: 12,
+                    ))
               ],
             ),
             const Spacer(),
-            CupertinoSwitch(value: widget.isActive, onChanged: (value) {})
+            Transform.scale(
+                scale: 0.8,
+                child: CupertinoSwitch(value: isActive, onChanged: (value) {}))
           ],
         ),
       ),
