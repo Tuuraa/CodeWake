@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'components/alarm_item.dart';
 
+// ignore: must_be_immutable
 class LaunchApp extends StatelessWidget {
-  const LaunchApp({super.key});
+  LaunchApp({super.key});
+
+  List alarms = [
+    ["09:00", "Работа", true],
+    ["09:00", "Работа", false],
+    ["09:00", "Работа", false],
+    ["09:00", "Работа", false],
+    ["09:00", "Работа", false],
+    ["09:00", "Работа", false],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +43,16 @@ class LaunchApp extends StatelessWidget {
           ],
           backgroundColor: Colors.black,
         ),
-        body: Container(),
+        body: Container(
+          child: ListView.builder(
+            itemCount: alarms.length,
+            itemBuilder: (context, index) => AlarmItem(
+              time: alarms[index][0],
+              name: alarms[index][1],
+              isActive: alarms[index][2],
+            ),
+          ),
+        ),
       ),
     );
   }
