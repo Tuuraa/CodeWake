@@ -11,12 +11,26 @@ class LaunchApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-          title: const Center(
-            child: Text(
-              "Будильники",
-              style: TextStyle(color: Colors.white, fontSize: 16),
+          title: const Text(
+            "Будильники",
+            style: TextStyle(color: Colors.white, fontSize: 16),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.menu,
+              color: Colors.white,
             ),
           ),
+          actions: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.settings,
+                  color: Colors.white,
+                ))
+          ],
           backgroundColor: Colors.black,
         ),
         body: Container(),
