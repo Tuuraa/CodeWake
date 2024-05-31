@@ -34,7 +34,7 @@ class _LaunchAppState extends State<LaunchApp> {
         appBar: AppBar(
           title: const Text(
             "Будильники",
-            style: TextStyle(color: Colors.white, fontSize: 16),
+            style: TextStyle(color: Colors.white, fontSize: 17),
           ),
           centerTitle: true,
           leading: IconButton(
