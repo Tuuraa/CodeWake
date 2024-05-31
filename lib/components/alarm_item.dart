@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class AlarmItem extends StatelessWidget {
-  String time;
+  Duration time;
   String name;
   bool isActive;
 
@@ -30,17 +30,20 @@ class AlarmItem extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  time,
+                  time.toString(),
                   style: TextStyle(
                       color: isActive ? activeTextColor : inactiveTextColor,
                       fontSize: 42,
                       fontWeight: FontWeight.w300),
                 ),
-                Text(name,
-                    style: TextStyle(
-                      color: isActive ? activeTextColor : inactiveTextColor,
-                      fontSize: 12,
-                    ))
+                Padding(
+                  padding: EdgeInsets.zero,
+                  child: Text(name,
+                      style: TextStyle(
+                        color: isActive ? activeTextColor : inactiveTextColor,
+                        fontSize: 12,
+                      )),
+                )
               ],
             ),
             const Spacer(),
