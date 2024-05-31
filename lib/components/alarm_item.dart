@@ -39,9 +39,9 @@ class AlarmItem extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: onDelete,
-              icon: Icons.delete,
               backgroundColor: Colors.red,
               borderRadius: BorderRadius.circular(12),
+              label: "Удалить",
             )
           ],
         ),
