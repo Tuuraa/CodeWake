@@ -83,8 +83,16 @@ class _HomeScreenState extends State<HomeScreen> {
 
 Future _displayBottomSheet(BuildContext context) {
   return showModalBottomSheet(
-      context: context,
-      builder: (context) => Container(
-            child: AddAlarm(),
-          ));
+    context: context,
+    isScrollControlled: true,
+    builder: (context) => Container(
+      padding: EdgeInsets.only(
+        bottom: MediaQuery.of(context).viewInsets.bottom,
+      ),
+      child: Container(
+        height: MediaQuery.of(context).size.height * 0.94,
+        child: AddAlarm(),
+      ),
+    ),
+  );
 }
