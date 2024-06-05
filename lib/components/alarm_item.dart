@@ -7,7 +7,6 @@ class AlarmItem extends StatelessWidget {
   Duration time;
   String name;
   bool isActive;
-  String strTime;
 
   final Color activeTextColor = Colors.white;
   final Color inactiveTextColor = Colors.grey;
@@ -15,15 +14,20 @@ class AlarmItem extends StatelessWidget {
   Function(bool)? switchPressed;
   Function(BuildContext? buildContext)? onDelete;
 
+  String formatDuration(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    String twoDigitMinutes = twoDigits(duration.inMinutes.remainder(60));
+    String twoDigitHours = twoDigits(duration.inHours);
+    return "$twoDigitHours:$twoDigitMinutes";
+  }
+
   AlarmItem(
       {super.key,
       required this.time,
       required this.name,
       required this.isActive,
       required this.switchPressed,
-      required this.onDelete})
-      : strTime =
-            "${time.inHours < 10 ? "0" : ""}${time.inHours}:${time.inMinutes.remainder(60)}";
+      required this.onDelete});
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +62,7 @@ class AlarmItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    strTime,
+                    formatDuration(time),
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: isActive ? activeTextColor : inactiveTextColor,
